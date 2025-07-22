@@ -2,7 +2,9 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+
 import authRouter from './routes/auth.route.js';
+import transactionRouter from './routes/transaction.route.js';
 
 dotenv.config();
 
@@ -17,6 +19,7 @@ app.get('/', (req, res) => {
 
 
 app.use('/api/auth', authRouter);
+app.use('/api/transactions', transactionRouter);
 
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
