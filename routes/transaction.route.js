@@ -11,10 +11,12 @@ import {
 
 const transactionRouter = express.Router();
 
-transactionRouter.post("/", protect, createTransaction);
-transactionRouter.get("/", protect, getTransactions);
-transactionRouter.get("/:id", protect, getTransactionById);
-transactionRouter.put("/:id", protect, updateTransaction);
-transactionRouter.delete("/:id", protect, deleteTransaction);
+transactionRouter.use(protect);
+
+transactionRouter.post("/", createTransaction);
+transactionRouter.get("/", getTransactions);
+transactionRouter.get("/:id", getTransactionById);
+transactionRouter.put("/:id", updateTransaction);
+transactionRouter.delete("/:id", deleteTransaction);
 
 export default transactionRouter;

@@ -36,6 +36,11 @@ const categorySchema = new mongoose.Schema({
     },
 }, { timestamps: true });
 
+categorySchema.index(
+    { userId: 1, name: 1, type: 1 },
+    { unique: true, partialFilterExpression: { isSystem: false } }
+);
+
 const Category = mongoose.model("Category", categorySchema);
 
 export default Category;
